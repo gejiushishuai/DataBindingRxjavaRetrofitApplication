@@ -13,7 +13,8 @@ public class BaseActivity extends Activity {
     DemoApiService demoApiService ;
     protected void onCreate(Bundle onSaveStateInstance){
         super.onCreate(onSaveStateInstance);
-        demoApiService = DemoRetrofit.create(DemoApiService.class, "http://www888.rollit.me/", getApplicationContext());
+        DemoOkHttpClientBuilder demoOkHttpClientBuilder = new DemoOkHttpClientBuilder();
+        demoApiService = DemoRetrofit.create(DemoApiService.class, "http://www888.rollit.me/", demoOkHttpClientBuilder.getBuilder(getApplicationContext()));
     }
     @Override
     protected void onResume(){

@@ -23,17 +23,14 @@ public class GetDataFromClient {
                     public void onNext(DataBean dataBean) {
                         dataListener.dataResponse(dataBean);
                     }
-
                     @Override
                     public void onCompleted() {
-                        //   append("getRxApiString onCompleted-->\n");
-                    }
 
+                    }
                     @Override
                     public void onError(Throwable e) {
-                        // append("getRxApiString onError-->\n" + e.getMessage());
-                    }
 
+                    }
                 });
     }
 }

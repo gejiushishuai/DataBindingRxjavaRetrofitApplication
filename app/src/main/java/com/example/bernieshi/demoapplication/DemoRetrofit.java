@@ -15,16 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by bernie.shi on 2016/7/24.
  */
 public class DemoRetrofit {
-    public static OkHttpClient.Builder builder = new OkHttpClient.Builder();
-    public static <T> T create(final Class<T> cls,String webSite,Context context) {
-        CookieManager cookieManager = new CookieManager();
-        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
-        builder.networkInterceptors()
-                .add(new DemoCookiesInterceptor(context));
-        builder.connectTimeout(15, TimeUnit.SECONDS);
-        builder.readTimeout(20, TimeUnit.SECONDS);
-        builder.writeTimeout(20, TimeUnit.SECONDS);
-        OkHttpClient okHttpClient = builder.build();
+    public static <T> T create(final Class<T> cls,String webSite,OkHttpClient.Builder build) {
+        OkHttpClient okHttpClient = build.build();
         Retrofit.Builder builder = new Retrofit.Builder();
         Retrofit retrofit = builder
                 .baseUrl(webSite)//注意此处,设置服务器的地址
